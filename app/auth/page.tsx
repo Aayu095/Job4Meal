@@ -32,11 +32,11 @@ function AuthPageContent() {
     if (!authLoading && user) {
       // User is already logged in, redirect to their dashboard
       if (user.role === 'worker') {
-        router.push('/worker');
+        router.replace('/worker');
       } else if (user.role === 'ngo') {
-        router.push('/ngo');
+        router.replace('/ngo');
       } else if (user.role === 'admin') {
-        router.push('/admin');
+        router.replace('/admin');
       }
     }
   }, [user, authLoading, router]);
@@ -89,11 +89,11 @@ function AuthPageContent() {
       // Redirect based on role
       setTimeout(() => {
         if (role === 'worker') {
-          router.push('/worker');
+          router.replace('/worker');
         } else if (role === 'ngo') {
-          router.push('/ngo');
+          router.replace('/ngo');
         } else if (role === 'admin') {
-          router.push('/admin');
+          router.replace('/admin');
         }
       }, 500);
     } catch (error: any) {
@@ -146,17 +146,18 @@ function AuthPageContent() {
 
       const userData = userSnap.data();
       
-      // Don't show loading false here - keep loading until redirect
       toast.success('Signed in successfully!');
 
-      // Redirect based on role - AuthProvider will handle state update
-      if (userData.role === 'worker') {
-        router.push('/worker');
-      } else if (userData.role === 'ngo') {
-        router.push('/ngo');
-      } else if (userData.role === 'admin') {
-        router.push('/admin');
-      }
+      // Wait a moment for AuthProvider to update state, then redirect
+      setTimeout(() => {
+        if (userData.role === 'worker') {
+          router.replace('/worker');
+        } else if (userData.role === 'ngo') {
+          router.replace('/ngo');
+        } else if (userData.role === 'admin') {
+          router.replace('/admin');
+        }
+      }, 500);
     } catch (error: any) {
       console.error('Sign in error:', error);
       
