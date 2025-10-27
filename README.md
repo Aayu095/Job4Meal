@@ -1,146 +1,141 @@
-# Job4Meal - Microtask-for-Food Employment Platform
+# 🍽️ Job4Meal
 
-> **Earn a meal, feed a future.**
+[![Next.js](https://img.shields.io/badge/Next.js-14.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-10.7-orange?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
 
-Job4Meal is a revolutionary platform that converts aid into empowerment by enabling workers to earn meal credits through verified microtasks posted by NGOs and local partners. Addressing **SDG 1 (No Poverty)** and **SDG 2 (Zero Hunger)** through technology and dignity.
+> **"Dignity in every meal earned."**
 
-## 🎯 Problem Statement
+A revolutionary platform that transforms aid into empowerment by enabling workers to earn meal credits through verified microtasks. Built with dignity, powered by technology.
 
-Urban and rural poor face two challenges:
-1. **Immediate hunger** - Need food now
-2. **Lack of opportunities** - Want to work but can't find short-term jobs
+---
 
-Traditional aid creates dependency. Job4Meal creates **dignity through work**.
+## 📖 Table of Contents
 
-## 💡 Solution
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#%EF%B8%8F-tech-stack)
+- [Getting Started](#-getting-started)
+- [Architecture](#-architecture)
+- [Deployment](#-deployment)
+- [License](#-license)
 
-A three-sided platform connecting:
-- **Workers** - Find nearby microtasks, complete them, earn meal credits
-- **NGOs/Partners** - Post tasks, verify completion, provide meal redemptions
-- **Community** - Self-sustaining economic loop that scales
+---
 
-## ✨ Key Features
+## 🌟 Overview
 
-### For Workers
-- 📱 Mobile-first PWA (works offline)
-- 🗺️ Location-based task discovery
-- 📸 Photo + geo-proof submission
-- 💳 Digital meal credit wallet
-- 🍽️ Redeem credits at partner locations
+### The Problem
+Traditional aid creates dependency. Millions need food **today** but also want **dignity through work**.
 
-### For NGOs/Partners
-- ➕ Easy task creation
-- ✅ Verification workflow with photo review
-- 📊 Impact dashboard
-- 🤝 Meal redemption management
+### Our Solution
+Job4Meal connects three key players:
 
-### For Admins
-- 📈 System-wide analytics
+```mermaid
+graph LR
+    A[👷 Workers] -->|Complete Tasks| B[🏢 NGOs/Partners]
+    B -->|Verify & Award Credits| A
+    A -->|Redeem Credits| C[🍽️ Restaurants]
+    B -->|Post Tasks| A
+    C -->|Provide Meals| A
+```
+
+**Workers** earn meal credits → **NGOs** verify work → **Restaurants** provide meals
+
+## ✨ Features
+
+<table>
+<tr>
+<td width="33%">
+
+### 👷 Workers
+- 🗺️ Find nearby tasks
+- 📸 Submit proof
+- 💳 Earn meal credits
+- 🍽️ Redeem at partners
+
+</td>
+<td width="33%">
+
+### 🏢 NGOs/Partners
+- ➕ Post microtasks
+- ✅ Verify submissions
+- 📊 Track impact
+- 🤝 Manage redemptions
+
+</td>
+<td width="33%">
+
+### 👨‍💼 Admins
+- 📈 System analytics
 - 👥 User management
 - 🏢 Organization oversight
 - 📊 Impact metrics
 
-## 🏗️ Tech Stack
+</td>
+</tr>
+</table>
 
-- **Frontend**: Next.js 14 + TypeScript + Tailwind CSS
-- **Backend**: Firebase (Auth, Firestore, Storage, Functions)
-- **State Management**: Zustand
-- **UI Components**: Lucide Icons, React Hot Toast
-- **Deployment**: Vercel (frontend) + Firebase (backend)
+## 🛠️ Tech Stack
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 18+ and npm
-- Firebase account ([console.firebase.google.com](https://console.firebase.google.com))
-- Git
-
-### 1. Clone & Install
-
-```bash
-git clone <your-repo-url>
-cd Job4meal
-npm install
+```
+┌─────────────────────────────────────────────┐
+│  Frontend: Next.js 14 + TypeScript          │
+│  Styling: Tailwind CSS + Framer Motion      │
+│  State: Zustand                             │
+├─────────────────────────────────────────────┤
+│  Backend: Firebase                          │
+│  - Authentication (Email/Password)          │
+│  - Firestore Database                       │
+│  - Cloud Storage                            │
+├─────────────────────────────────────────────┤
+│  Deployment: Vercel                         │
+└─────────────────────────────────────────────┘
 ```
 
-### 2. Firebase Setup
+## 🚀 Getting Started
 
-1. **Create Firebase Project**
-   - Go to [Firebase Console](https://console.firebase.google.com)
-   - Create new project: "Job4Meal"
-   - Enable Google Analytics (optional)
+### Installation
 
-2. **Enable Services**
-   - **Authentication** → Phone (for production) or Email (for demo)
-   - **Firestore Database** → Create database in production mode
-   - **Storage** → Create default bucket
-   - **Hosting** (optional for deployment)
+```bash
+# Clone repository
+git clone <your-repo-url>
+cd Job4meal
 
-3. **Get Configuration**
-   - Project Settings → General → Your apps → Web app
-   - Copy config values
+# Install dependencies
+npm install
 
-4. **Service Account** (for seed script)
-   - Project Settings → Service Accounts
-   - Generate new private key
-   - Save JSON file securely
+# Set up environment variables
+cp .env.local.example .env.local
+# Edit .env.local with your Firebase credentials
 
-### 3. Environment Variables
+# Run development server
+npm run dev
+```
 
-Create `.env.local` in project root:
+Visit `http://localhost:3000` 🎉
+
+### Firebase Setup
+
+1. Create project at [Firebase Console](https://console.firebase.google.com)
+2. Enable **Authentication** (Email/Password)
+3. Enable **Firestore Database**
+4. Enable **Cloud Storage**
+5. Copy config to `.env.local`
+
+### Environment Variables
 
 ```env
-# Firebase Web Config
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-
-# Firebase Admin (for seed script)
-FIREBASE_ADMIN_PROJECT_ID=your_project_id
-FIREBASE_ADMIN_CLIENT_EMAIL=firebase-adminsdk@...iam.gserviceaccount.com
-FIREBASE_ADMIN_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
 ```
-
-### 4. Deploy Security Rules
-
-```bash
-# Install Firebase CLI
-npm install -g firebase-tools
-
-# Login
-firebase login
-
-# Initialize project
-firebase init
-
-# Deploy rules
-firebase deploy --only firestore:rules
-firebase deploy --only storage:rules
-```
-
-### 5. Seed Demo Data
-
-```bash
-npm run seed
-```
-
-This creates:
-- 3 organizations (NGOs + shops)
-- 5 users (workers, NGO staff, admin)
-- 5 tasks (various statuses)
-- 2 redemptions
-
-### 6. Run Development Server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
 
 ## 👥 Demo Users
 
@@ -155,164 +150,126 @@ After seeding, you can login with these roles:
 
 **Demo Mode**: The app runs in demo mode by default. Enter any phone number and any 6-digit OTP to login.
 
-## 📱 User Flows
+## 🏛️ Architecture
 
-### Worker Flow
-1. Sign up → Choose "Worker" role
-2. Browse nearby tasks
-3. Claim a task
-4. Complete work → Upload photo proof
-5. Wait for verification
-6. Credits added to wallet
-7. Redeem meals at partner locations
+### System Flow
 
-### NGO Flow
-1. Sign up → Choose "NGO/Partner" role
-2. Create microtask (title, description, reward)
-3. Workers claim and complete
-4. Review photo submissions
-5. Verify → Credits awarded automatically
-6. Process meal redemptions
+```
+┌────────────────────────────────────────────────────────────┐
+│                      USER INTERFACE                           │
+│  [👷 Worker]    [🏢 NGO]    [👨‍💼 Admin]                      │
+└────────────────────────────────────────────────────────────┘
+                            │
+                            ↓
+┌────────────────────────────────────────────────────────────┐
+│                    NEXT.JS 14 APP                           │
+│  - Server Components                                        │
+│  - Client Components                                        │
+│  - API Routes                                               │
+└────────────────────────────────────────────────────────────┘
+                            │
+                            ↓
+┌────────────────────────────────────────────────────────────┐
+│                  FIREBASE BACKEND                          │
+│  [🔐 Auth]  [📊 Firestore]  [💾 Storage]              │
+└────────────────────────────────────────────────────────────┘
+```
 
-### Admin Flow
-1. Login with admin credentials
-2. View system metrics
-3. Monitor user activity
-4. Track impact (meals issued, tasks completed)
+### Data Model
 
-## 🎬 Creating Demo Video
+```
+users/
+  ├─ {userId}
+  │   ├─ role: "worker" | "ngo" | "admin"
+  │   ├─ wallet: { mealCredits: number }
+  │   └─ verified: boolean
 
-For the hackathon submission, record a 2-5 minute video showing:
+tasks/
+  ├─ {taskId}
+  │   ├─ title, description, reward
+  │   ├─ status: "open" | "claimed" | "completed"
+  │   └─ location: { lat, lng }
 
-1. **Problem Statement** (30s)
-   - Show statistics on poverty & hunger
-   - Explain dependency vs. empowerment
+redemptions/
+  └─ {redemptionId}
+      ├─ workerId, partnerId
+      ├─ creditsUsed
+      └─ timestamp
+```
 
-2. **Solution Demo** (3-4 min)
-   - Worker claiming task
-   - Completing and submitting proof
-   - NGO verifying task
-   - Credits awarded
-   - Meal redemption
+## 📊 Key Metrics
 
-3. **Impact Metrics** (30s)
-   - Show admin dashboard
-   - Highlight scalability
+- 🍽️ **Meals Earned**: Track total meals provided
+- ✅ **Tasks Completed**: Monitor platform activity  
+- 👥 **Active Workers**: Growing community
+- 🏢 **Partner NGOs**: Expanding network
 
-See `DEMO-GUIDE.md` for detailed presentation script.
+## 🔒 Security
 
-## 🏆 Hackathon Alignment
+- 🔐 Firebase Authentication
+- 🛡️ Role-based access control
+- 📝 Firestore security rules
+- 📸 Photo verification system
 
-### SDG Alignment
-- **SDG 1 (No Poverty)**: Creates immediate income through microtasks
-- **SDG 2 (Zero Hunger)**: Provides meal access via earned credits
+## 🚀 Deployment
 
-### Judging Criteria Scorecard
+### Deploy to Vercel
 
-| Criteria | Score | Evidence |
-|----------|-------|----------|
-| **Impact** (30%) | ⭐⭐⭐⭐⭐ | Addresses both SDGs, measurable outcomes, self-sustaining |
-| **Innovation** (25%) | ⭐⭐⭐⭐⭐ | Novel "dignity not dependency" model, economic loop |
-| **Feasibility** (20%) | ⭐⭐⭐⭐⭐ | Working prototype, proven tech stack, clear MVP |
-| **Scalability** (20%) | ⭐⭐⭐⭐⭐ | Serverless architecture, easy NGO onboarding |
-| **Design** (15%) | ⭐⭐⭐⭐ | Mobile-first, low-literacy friendly, clean UI |
-| **Presentation** (10%) | ⭐⭐⭐⭐⭐ | Clear narrative, working demo, impact focus |
+1. Push code to GitHub/GitLab
+2. Import project on [Vercel](https://vercel.com)
+3. Add environment variables
+4. Deploy! 🎉
 
-## 📊 Impact Potential
+**See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.**
 
-**Pilot Scale** (1 city, 6 months):
-- 50 partner NGOs
-- 500 active workers
-- 2,000 tasks/month
-- 10,000 meals earned
-
-**Regional Scale** (1 year):
-- 500 partners across 10 cities
-- 10,000 workers
-- 50,000 tasks/month
-- 250,000 meals earned
-
-**National Scale** (3 years):
-- Integration with government welfare programs
-- 1M+ workers
-- Economic mobility tracking
-- Skills development pathways
-
-## 🔐 Security & Privacy
-
-- Phone OTP authentication
-- Role-based access control
-- Firestore security rules
-- Geolocation verification
-- Photo proof system
-- Transaction audit logs
-
-## 🧪 Testing
+### Commands
 
 ```bash
-# Run development server
+# Development
 npm run dev
 
-# Build for production
+# Build
 npm run build
 
-# Start production server
+# Production
 npm start
 ```
 
-Test with multiple browser windows to simulate different user roles simultaneously.
+## 📝 Project Structure
 
-## 📦 Deployment
-
-### Vercel (Frontend)
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-
-# Production deployment
-vercel --prod
 ```
-
-### Firebase (Backend)
-
-```bash
-# Deploy Firestore rules & indexes
-firebase deploy --only firestore
-
-# Deploy storage rules
-firebase deploy --only storage
-
-# Deploy all
-firebase deploy
+Job4Meal/
+├── app/              # Next.js pages & routes
+├── components/       # Reusable React components
+├── lib/              # Utilities & Firebase config
+├── public/           # Static assets
+└── .env.local        # Environment variables
 ```
-
-## 🤝 Contributing
-
-This project was built for GNEC Hackathon 2025. For production deployment:
-
-1. Replace demo auth with production Phone Auth
-2. Add SMS notifications via Twilio
-3. Implement geofencing for task locations
-4. Add QR code redemptions
-5. Create mobile apps (React Native)
-6. Add multi-language support
 
 ## 📄 License
 
-MIT License - Built for social impact
+[MIT License](LICENSE) - Open source for social impact
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our contributing guidelines before submitting PRs.
+
+## 📞 Support
+
+- 📧 Email: aayushigoel73@gmail.com, msabhishekanni10@gmail.com
 
 ## 🙏 Acknowledgments
 
-- **Youth Coders Collective** for inspiring student innovation
-- **UN SDGs** for the guiding framework
-- Partner NGOs for inspiring this solution
+Built with passion for social impact. Special thanks to all NGOs and community partners working to end hunger.
 
 ---
 
-**Built with ❤️ for social impact**
+<div align="center">
 
-*Tagline: "Earn a meal, feed a future."*
+**Built with ❤️ for a hunger-free world**
+
+*"Dignity in every meal earned."*
+
+[⭐ Star this repo](../../stargazers) | [🐛 Report Bug](../../issues) | [💡 Request Feature](../../issues)
+
+</div>
